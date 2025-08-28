@@ -1,16 +1,25 @@
-CC=g++ -std=c++98
-CPPFILES=megaphone.cpp
-BINARY=megaphone
+CC = clang++ 
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+SRCS = megaphone.cpp
+NAME = megaphone
 
-all: $(BINARY)
+OBJS = $(patsubst %.cpp, %.o, $(SRCS))
 
-$(BINARY): $(CPPFILES)
-	$(CC) $(CPPFILES) -o $(BINARY)
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) $< -c -o $@
+
+re: fclean all
 
 clean:
-	rm -rf $(BINARY)
+	rm -rf $(OBJS)
 
 fclean: clean
+	rm -rf $(NAME)
 
 
 .PHONY: all clean fclean
