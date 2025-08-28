@@ -44,6 +44,15 @@ void	handle_length(std::string s)
 	std::cout << s << ".|";
 }
 
+void	PhoneBook::printContact(int index)
+{
+	std::cout << this->_phonebook[index].get_first_name() << std::endl;
+	std::cout << this->_phonebook[index].get_last_name() << std::endl;
+	std::cout << this->_phonebook[index].get_nickname() << std::endl;
+	std::cout << this->_phonebook[index].get_phone_number() << std::endl;
+	std::cout << this->_phonebook[index].get_darkest_secret() << std::endl;
+}
+
 void	PhoneBook::printContacts(void)
 {
 	int	i;
@@ -62,3 +71,4 @@ void	PhoneBook::printContacts(void)
 		i++;
 	}
 }
+

@@ -6,12 +6,11 @@
 /*   By: ishaaq <ishaaq@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 11:53:07 by ishaaq            #+#    #+#             */
-/*   Updated: 2025/07/26 14:47:38 by ishaaq           ###   ########.fr       */
+/*   Updated: 2025/08/28 11:40:20 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#pragma once
 
 # include <iostream>
 # include "Contact.hpp"
@@ -23,10 +22,10 @@ class PhoneBook
         ~PhoneBook(void);
         void    addContact(Contact c);
         void    printContacts(void);
+        void    printContact(int index);
     private:
         Contact	_phonebook[8];
         int		_index;
         int     _oldest;
 };
 
-#endif

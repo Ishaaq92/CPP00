@@ -6,7 +6,7 @@
 /*   By: ishaaq <ishaaq@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 11:44:25 by ishaaq            #+#    #+#             */
-/*   Updated: 2025/07/26 13:16:13 by ishaaq           ###   ########.fr       */
+/*   Updated: 2025/08/28 11:41:23 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,4 @@ std::string	Contact::get_darkest_secret(void)
 {
 	return (this->_darkest_secret);
 }
+

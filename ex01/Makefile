@@ -1,29 +1,36 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: ishaaq <ishaaq@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/26 12:18:56 by ishaaq            #+#    #+#              #
-#    Updated: 2025/07/26 14:54:11 by ishaaq           ###   ########.fr        #
+#    Updated: 2025/08/28 11:46:05 by isahmed          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = g++
-CFLAGS = -std=c++98 -Wall -Wextra -Werror
-CPPFILES = main.cpp PhoneBook.cpp Contact.cpp
-BINARY = telephone
+CC = clang++
+CFLAGS = -Wall -Wextra -Werror -std=c++98 
+NAME = telephone
 
-all: $(BINARY)
+SRCS= main.cpp PhoneBook.cpp Contact.cpp
 
-$(BINARY) : $(CPPFILES)
-	$(CC) $(CFLAGS) $(CPPFILES) -o $(BINARY)
+OBJS = $(patsubst %.cpp, %.o, $(SRCS))
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) $< -c -o $@
 
 re: fclean all
 
 clean:
-	rm -rf *.o
-fclean:
-	rm -rf *.o
-	rm -rf $(BINARY) 
+	rm -rf $(OBJS) 
+
+fclean: clean
+	rm -rf $(NAME) 
+

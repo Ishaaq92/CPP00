@@ -6,17 +6,13 @@
 /*   By: ishaaq <ishaaq@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 12:17:59 by ishaaq            #+#    #+#             */
-/*   Updated: 2025/07/26 14:04:47 by ishaaq           ###   ########.fr       */
+/*   Updated: 2025/08/28 11:45:43 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
 #include <cstdlib>
-
-// Three actions:
-//		ADD
-//		SEARCH
-//		EXIT
 
 std::string get_input(const std::string& prompt)
 {
@@ -50,11 +46,18 @@ int	main(void)
 			pb.addContact(c1);
 			pb.printContacts();
 		}
-		else
+		else if (cmd.compare("SEARCH") == 0)
 		{
 			pb.printContacts();
+			cmd = "-1";
+			while (atoi(cmd.c_str()) < 0 || atoi(cmd.c_str()) > 7)
+				cmd = get_input("Enter an index\n");
+			pb.printContact(atoi(cmd.c_str()));
 		}
+		else
+			pb.printContacts();
 		cmd = "";
 	}
 	return (0);
 }
+

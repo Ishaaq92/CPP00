@@ -6,12 +6,11 @@
 /*   By: ishaaq <ishaaq@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 12:12:42 by ishaaq            #+#    #+#             */
-/*   Updated: 2025/07/26 13:12:53 by ishaaq           ###   ########.fr       */
+/*   Updated: 2025/08/28 11:12:31 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#pragma once
 
 # include <iostream>
 
@@ -34,4 +33,3 @@ class Contact
 		std::string	_darkest_secret;
 };
 
-#endif
