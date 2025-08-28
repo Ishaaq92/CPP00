@@ -3,6 +3,8 @@
 #include <string>
 #include <limits>
 
+std::string get_input(const std::string& prompt);
+
 PhoneBook:: PhoneBook(void) : _index(0), _oldest(0)
 {
 	std::cout << "PhoneBook is constructed" << std:: endl;
@@ -13,8 +15,11 @@ PhoneBook:: ~PhoneBook(void)
 	std::cout << "PhoneBook is destructed" << std:: endl;
 }
 
-void	PhoneBook::addContact(Contact c)
+void	PhoneBook::addContact(void)
 {
+	Contact	c;
+
+	c.read_contact();
 	if (this->_index == 8)
 	{
 		this->_phonebook[this->_oldest] = c;
@@ -23,6 +28,17 @@ void	PhoneBook::addContact(Contact c)
 	}
 	this->_phonebook[this->_index] = c;
 	this->_index++;
+}
+
+void    PhoneBook::search(void)
+{
+	std::string	cmd;
+
+	this->printContacts();
+	cmd = "-1";
+	while (atoi(cmd.c_str()) < 0 || atoi(cmd.c_str()) > 7)
+		cmd = get_input("Enter an index");
+	this->printContact(atoi(cmd.c_str()));
 }
 
 void	handle_length(std::string s)
@@ -46,6 +62,8 @@ void	handle_length(std::string s)
 
 void	PhoneBook::printContact(int index)
 {
+	if (this->_phonebook[index].get_first_name().empty())
+		return ;
 	std::cout << this->_phonebook[index].get_first_name() << std::endl;
 	std::cout << this->_phonebook[index].get_last_name() << std::endl;
 	std::cout << this->_phonebook[index].get_nickname() << std::endl;
